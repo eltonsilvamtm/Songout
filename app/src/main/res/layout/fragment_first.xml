@@ -12,7 +12,7 @@
         android:layout_height="126dp"
         android:layout_marginBottom="56dp"
         android:text="@string/next"
-        app:layout_constraintBottom_toTopOf="@+id/button_exercise3"
+        app:layout_constraintBottom_toTopOf="@+id/button_exercise_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         tools:text="Exercise 2" />
 
     <Button
-        android:id="@+id/button_exercise3"
+        android:id="@+id/button_exercise_3"
         android:layout_width="401dp"
         android:layout_height="113dp"
         android:layout_marginBottom="60dp"
