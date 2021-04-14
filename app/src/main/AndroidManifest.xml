@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Songout">
         <activity
             android:name=".ChosenExerciseActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
