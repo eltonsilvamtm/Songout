@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="10dp"
@@ -14,34 +14,32 @@
     tools:context=".ChosenExerciseActivity"
     android:elevation="0dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/selected_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_launcher_background"></ImageView>
 
         <TextView
             android:id="@+id/selected_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Exercise Name"
             android:textStyle="bold"
-
             android:layout_marginTop="5dp"
             android:layout_below="@id/selected_image"></TextView>
 
         <TextView
             android:id="@+id/selected_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/selected_name"
             android:layout_marginTop="7dp"
@@ -49,7 +47,7 @@
             android:textStyle="italic"
             android:layout_marginStart="5dp"></TextView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

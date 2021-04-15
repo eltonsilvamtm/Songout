@@ -2,12 +2,12 @@ package com.songout;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,9 +43,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ChosenExerciseActivity.class);
-                intent.putExtra( "text_view_exercise_name", exercisesArray.get(position).getExercise_name());
-                intent.putExtra( "text_view_exercise_description", exercisesArray.get(position).getExercise_description());
-                intent.putExtra( "text_view_exercise_description", exercisesArray.get(position).getExercise_image());
+                intent.putExtra("exercise_name", exercisesArray.get(position).getExercise_name());
+                intent.putExtra("exercise_description", exercisesArray.get(position).getExercise_description());
+                intent.putExtra("exercise_image", exercisesArray.get(position).getExercise_image());
                 v.getContext().startActivity(intent); //you cannot start an activity without a context(this) so that you a Context object which will refer to the activity you wish to retrieve the information
             }
         });
