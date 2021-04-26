@@ -1,2 +1,6 @@
+include ':app-remote-sample'
+include ':app-remote-lib'
+include ':auth-lib'
+include ':auth-sample'
 include ':app'
 rootProject.name = "Songout"
