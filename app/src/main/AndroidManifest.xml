@@ -11,16 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Songout">
+
+        <!-- Creating main activity -->
         <activity
-            android:name=".ChosenExerciseActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".views.MainActivity"
+            android:parentActivityName=".views.SplashActivity"></activity>
+
+        <!-- Creating the Chosen Exercise activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".views.ChosenExerciseActivity"
+            android:parentActivityName=".views.MainActivity" />
+
+        <!-- Creating Splash Activity -->
+        <activity
+            android:name=".views.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Songout.NoActionBar">
             <intent-filter>
-
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
