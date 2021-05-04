@@ -1,6 +1,4 @@
-include ':app-remote-sample'
-include ':app-remote-lib'
-include ':auth-lib'
-include ':auth-sample'
+include ':spotify-auth-lib'
+include ':spotify-app-remote'
 include ':app'
 rootProject.name = "Songout"

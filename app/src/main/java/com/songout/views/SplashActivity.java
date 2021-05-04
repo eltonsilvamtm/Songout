@@ -13,13 +13,13 @@ import com.android.volley.toolbox.Volley;
 import com.songout.R;
 import com.songout.connectors.UserService;
 import com.songout.model.User;
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
-//import com.songout.AuthenticationRequest;
-//import com.spotify.sdk.android.authentication.AuthenticationClient;
-//import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
 /**
- * Start Activity, authenticate Spotify
+ * Start Activity to authenticate Spotify
  */
 public class SplashActivity extends AppCompatActivity {
 
@@ -69,10 +69,10 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void authenticateSpotify() {
-//        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-//        builder.setScopes(new String[]{SCOPES});
-//        AuthenticationRequest request = builder.build();
-//        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
+        builder.setScopes(new String[]{SCOPES});
+        AuthenticationRequest request = builder.build();
+        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 
 
@@ -80,30 +80,30 @@ public class SplashActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
-        // Check if result comes from the correct activity
-//        if (requestCode == REQUEST_CODE) {
-//            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
-//
-//            switch (response.getType()) {
-//                // Response was successful and contains auth token
-//                case TOKEN:
-//                    editor = getSharedPreferences("SPOTIFY", 0).edit();
-//                    editor.putString("token", response.getAccessToken());
-//                    Log.d("STARTING", "GOT AUTH TOKEN");
-//                    editor.apply();
-//                    waitForUserInfo();
-//                    break;
-//
-//                // Auth flow returned an error
-//                case ERROR:
-//                    // Handle error response
-//                    break;
-//
-//                // Most likely auth flow was cancelled
-//                default:
-//                    // Handle other cases
-//            }
-//        }
+        //Check if result comes from the correct activity
+        if (requestCode == REQUEST_CODE) {
+            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+
+            switch (response.getType()) {
+                // Response was successful and contains auth token
+                case TOKEN:
+                    editor = getSharedPreferences("SPOTIFY", 0).edit();
+                    editor.putString("token", response.getAccessToken());
+                    Log.d("STARTING", "GOT AUTH TOKEN");
+                    editor.apply();
+                    waitForUserInfo();
+                    break;
+
+                // Auth flow returned an error
+                case ERROR:
+                    // Handle error response
+                    break;
+
+                // Most likely auth flow was cancelled
+                default:
+                    // Handle other cases
+            }
+        }
     }
 
 
