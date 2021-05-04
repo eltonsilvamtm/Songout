@@ -18,6 +18,7 @@ import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
 
+
 /**
  * Start Activity to authenticate Spotify
  */
@@ -26,7 +27,11 @@ public class SplashActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "f2dab12c88a04dec9376b79abb952ea0";
     private static final String REDIRECT_URI = "com.songout://callback";
     private static final int REQUEST_CODE = 1337;
-    private static final String SCOPES = "user-read-recently-played,user-library-modify,user-library-read,playlist-modify-public,playlist-modify-private,user-read-email,user-read-private,user-read-birthdate,playlist-read-private,playlist-read-collaborative";
+    private static final String SCOPES = "user-library-read, user-read-playback-position, " +
+            "user-read-private, user-read-email, playlist-read-private, user-library-modify, user-top-read, " +
+            "playlist-read-collaborative, playlist-modify-public, playlist-modify-private, ugc-image-upload, " +
+            "user-follow-read, user-follow-modify, user-read-playback-state, user-modify-playback-state, " +
+            "user-read-currently-playing, user-read-recently-played";
     private SharedPreferences.Editor editor;
     private SharedPreferences msharedPreferences;
     private RequestQueue queue;
@@ -69,7 +74,8 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void authenticateSpotify() {
-        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
+        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder
+                (CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
         builder.setScopes(new String[]{SCOPES});
         AuthenticationRequest request = builder.build();
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
@@ -106,5 +112,10 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-
 }
+
+/*
+            "user-read-recently-played,user-library-modify," +
+            "user-library-read,playlist-modify-public,playlist-modify-private,user-read-email," +
+            "user-read-private,user-read-birthdate,playlist-read-private,playlist-read-collaborative";
+*/
