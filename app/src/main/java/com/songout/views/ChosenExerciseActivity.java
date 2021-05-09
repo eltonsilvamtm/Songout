@@ -8,10 +8,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.songout.R;
+import com.songout.model.Song;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 public class ChosenExerciseActivity extends AppCompatActivity {
     TextView selected_name, selected_description;
     ImageView selected_image;
+    public SpotifyAppRemote mSpotifyAppRemote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,16 @@ public class ChosenExerciseActivity extends AppCompatActivity {
         selected_image.setImageResource(intent.getIntExtra("exercise_image", 0));
 
 
-        //System.out.println(exercise_name.getText().toString());
+
 
 
     }
+
+    public void playSong(Song song) {
+        String songToPlay = "spotify:track:" + song.getId();
+        //mSpotifyAppRemote.getPlayerApi().play(songToPlay);
+    }
+
+
+
 }

@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity {
             editor = getSharedPreferences("SPOTIFY", 0).edit();
             editor.putString("userid", user.id);
             Log.d("STARTING", "GOT USER INFORMATION");
-            // We use commit instead of apply because we need the information stored immediately
+            // We use commit instead of apply because we need the information be stored immediately
             editor.commit();
             startMainActivity();
         });
@@ -113,9 +113,3 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 }
-
-/*
-            "user-read-recently-played,user-library-modify," +
-            "user-library-read,playlist-modify-public,playlist-modify-private,user-read-email," +
-            "user-read-private,user-read-birthdate,playlist-read-private,playlist-read-collaborative";
-*/
