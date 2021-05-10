@@ -26,7 +26,7 @@ android {
         debug{
             keyAlias 'androiddebugkey'
             keyPassword '467931'
-            storeFile file('C:\\Users\\elton\\.android\\debug-keystore.jks')
+            //storeFile file('C:\\Users\\elton\\.android\\debug-keystore.jks')
             storePassword '467931'
         }
     }
