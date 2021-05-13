@@ -34,8 +34,8 @@ public class SongService {
         return songs;
     }
 
-    public ArrayList<Song> getRecentlyPlayedTracks(final VolleyCallBack callBack) {
-        String endpoint = "https://api.spotify.com/v1/me/player/recently-played";
+    public ArrayList<Song> getLikedTracks(final VolleyCallBack callBack) {
+        String endpoint = "https://api.spotify.com/v1/me/tracks";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, endpoint, null, response -> {
                     Gson gson = new Gson();
