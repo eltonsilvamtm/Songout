@@ -11,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.songout.R;
+import com.songout.connectors.SpotifyConnector;
 import com.songout.connectors.UserService;
 import com.songout.model.User;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -24,8 +28,8 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse;
  */
 public class SplashActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "f2dab12c88a04dec9376b79abb952ea0";
-    private static final String REDIRECT_URI = "com.songout://callback";
+    public static final String CLIENT_ID = "f2dab12c88a04dec9376b79abb952ea0";
+    public static final String REDIRECT_URI = "com.songout://callback";
     private static final int REQUEST_CODE = 1337;
     private static final String SCOPES = "user-library-read, user-read-playback-position, " +
             "user-read-private, user-read-email, playlist-read-private, user-library-modify, user-top-read, " +
@@ -35,6 +39,7 @@ public class SplashActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private SharedPreferences msharedPreferences;
     private RequestQueue queue;
+    SpotifyConnector connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +48,12 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash);
 
-
-        authenticateSpotify();
-
         msharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
         queue = Volley.newRequestQueue(this);
+
+        //connect = new SpotifyConnector(SplashActivity.this);
+        authenticateSpotify();
+
     }
 
 
@@ -74,11 +80,14 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void authenticateSpotify() {
+        Log.d("log 1", "log 1");
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder
                 (CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
         builder.setScopes(new String[]{SCOPES});
+        Log.d("log 2", "log 2");
         AuthenticationRequest request = builder.build();
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+        Log.d("log 3", "log 3");
     }
 
 

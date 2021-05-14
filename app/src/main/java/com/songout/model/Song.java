@@ -97,4 +97,8 @@ public class Song {
 //    public void setPlaylist(Playlist playlist) {
 //        this.playlist = playlist;
 //    }
+    public String toString(){
+
+        return name + ","+ id;
+    }
 }

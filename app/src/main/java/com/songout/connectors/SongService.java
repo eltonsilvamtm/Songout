@@ -2,6 +2,7 @@ package com.songout.connectors;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -9,7 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.songout.VolleyCallBack;
+import com.songout.views.VolleyCallBack;
 import com.songout.model.Song;
 
 import org.json.JSONArray;
@@ -35,9 +36,10 @@ public class SongService {
     }
 
     public ArrayList<Song> getLikedTracks(final VolleyCallBack callBack) {
-        String endpoint = "https://api.spotify.com/v1/me/tracks";
+        String endpoint = "https://api.spotify.com/v1/me/player/recently-played";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, endpoint, null, response -> {
+
                     Gson gson = new Gson();
                     JSONArray jsonArray = response.optJSONArray("items");
                     for (int n = 0; n < jsonArray.length(); n++) {
@@ -46,11 +48,13 @@ public class SongService {
                             object = object.optJSONObject("track");
                             Song song = gson.fromJson(object.toString(), Song.class);
                             songs.add(song);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                     callBack.onSuccess();
+
                 }, error -> {
                     // TODO: Handle error
 
@@ -102,4 +106,8 @@ public class SongService {
         }
         return ids;
     }
+
+
+
+
 }

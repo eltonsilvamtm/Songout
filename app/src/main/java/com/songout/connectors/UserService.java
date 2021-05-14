@@ -6,13 +6,14 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.songout.VolleyCallBack;
+import com.songout.views.VolleyCallBack;
 import com.songout.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserService {
+public class
+UserService {
 
     private static final String ENDPOINT = "https://api.spotify.com/v1/me";
     private final SharedPreferences msharedPreferences;
